@@ -12,6 +12,13 @@ const scoreEl = document.getElementById('score');
 const timerEl = document.getElementById('timer');
 
 const keys = {};
+window.addEventListener('keydown', (e) => {
+    keys[e.key] = true;
+    if (e.key === 'Escape' && gameState.status === 'PLAYING') {
+        gameState.status = 'PAUSED';
+        document.getElementById('overlay-pause').classList.remove('hidden');
+    }
+});
 
 window.addEventListener('keydown', (e) => keys[e.key] = true);
 window.addEventListener('keyup', (e) => keys[e.key] = false);
@@ -70,6 +77,23 @@ function render() {
     scoreEl.textContent = gameState.score;
     timerEl.textContent = Math.floor(gameState.time);
 }
+
+function restartGame() {
+    gameState.score = 0;
+    gameState.lives = 3;
+    gameState.time = 0;
+    gameState.status = 'PLAYING';
+    ball.x = 400;
+    ball.y = 550;
+    ball.vx = 200;
+    ball.vy = -300;
+    paddle.x = 350;
+    bricks.forEach(brick => {
+        brick.active = true;
+        brick.el.style.display = 'block';
+    });
+}
+
 
 
 function gameLoop(timestamp) {
@@ -153,6 +177,16 @@ if (lastTime === 0) lastTime = timestamp ; // fix the first frame
 document.getElementById('btn-back').addEventListener('click', () => {
     document.getElementById('overlay-history').classList.add('hidden');
     document.getElementById('overlay-menu').classList.remove('hidden');
+});
+
+document.getElementById('btn-continue').addEventListener('click', () => {
+    document.getElementById('overlay-pause').classList.add('hidden');
+    gameState.status = 'PLAYING';
+});
+
+document.getElementById('btn-restart').addEventListener('click', () => {
+    document.getElementById('overlay-pause').classList.add('hidden');
+    restartGame();
 });
 
 
