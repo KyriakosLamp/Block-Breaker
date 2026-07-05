@@ -13,6 +13,25 @@ body {
   background: #0d0015;
   font-family: monospace;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("retro-80s-grid-abstract-background.webp") center / cover
+    no-repeat;
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#hud,
+#game {
+  position: relative;
+  z-index: 1;
 }
 
 /* HUD */
@@ -32,7 +51,9 @@ body {
   background: #12002a;
   overflow: hidden;
   border: 2px solid #39ff14;
-  box-shadow: 0 0 16px #39ff14, 0 0 40px rgba(57, 255, 20, 0.3);
+  box-shadow:
+    0 0 16px #39ff14,
+    0 0 40px rgba(57, 255, 20, 0.3);
 }
 
 /* Paddle */
@@ -44,7 +65,9 @@ body {
   height: 12px;
   background: #39ff14;
   border-radius: 4px;
-  box-shadow: 0 0 8px #39ff14, 0 0 20px rgba(57, 255, 20, 0.6);
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 20px rgba(57, 255, 20, 0.6);
   transform: translate3d(350px, 570px, 0);
 }
 
@@ -57,7 +80,9 @@ body {
   height: 14px;
   background: #39ff14;
   border-radius: 50%;
-  box-shadow: 0 0 8px #39ff14, 0 0 20px rgba(57, 255, 20, 0.8);
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 20px rgba(57, 255, 20, 0.8);
   transform: translate3d(400px, 550px, 0);
 }
 
@@ -73,10 +98,22 @@ body {
 }
 
 /* Brick color tiers */
-.brick-1 { background: #39ff14; box-shadow: 0 0 6px #39ff14; }
-.brick-2 { background: #7fff00; box-shadow: 0 0 6px #7fff00; }
-.brick-3 { background: #a855f7; box-shadow: 0 0 6px #a855f7; }
-.brick-4 { background: #d946ef; box-shadow: 0 0 6px #d946ef; }
+.brick-1 {
+  background: #39ff14;
+  box-shadow: 0 0 6px #39ff14;
+}
+.brick-2 {
+  background: #7fff00;
+  box-shadow: 0 0 6px #7fff00;
+}
+.brick-3 {
+  background: #a855f7;
+  box-shadow: 0 0 6px #a855f7;
+}
+.brick-4 {
+  background: #d946ef;
+  box-shadow: 0 0 6px #d946ef;
+}
 
 /* Overlays */
 .overlay {
@@ -96,7 +133,9 @@ body {
   letter-spacing: 4px;
   text-transform: uppercase;
   color: #39ff14;
-  text-shadow: 0 0 10px #39ff14, 0 0 24px #39ff14;
+  text-shadow:
+    0 0 10px #39ff14,
+    0 0 24px #39ff14;
 }
 
 .overlay button {
@@ -110,7 +149,10 @@ body {
   border-radius: 2px;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    box-shadow 0.15s;
 }
 
 .overlay button:hover {
@@ -131,7 +173,10 @@ body {
   text-align: center;
   line-height: 1.1;
   color: #39ff14;
-  text-shadow: 0 0 12px #39ff14, 0 0 30px #39ff14, 0 0 60px rgba(57, 255, 20, 0.5);
+  text-shadow:
+    0 0 12px #39ff14,
+    0 0 30px #39ff14,
+    0 0 60px rgba(57, 255, 20, 0.5);
   margin-bottom: 8px;
 }
 
@@ -176,9 +221,18 @@ body {
   text-shadow: 0 0 8px #ffd700;
 }
 
-.hs-rank { color: #39ff14; text-shadow: 0 0 6px #39ff14; min-width: 40px; }
-.hs-name { flex: 1; text-align: center; }
-.hs-score { text-align: right; }
+.hs-rank {
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff14;
+  min-width: 40px;
+}
+.hs-name {
+  flex: 1;
+  text-align: center;
+}
+.hs-score {
+  text-align: right;
+}
 
 /* Game Over Layout */
 #gameover-layout {
@@ -197,7 +251,9 @@ body {
 #gameover-left h2 {
   font-size: 48px;
   color: #d946ef;
-  text-shadow: 0 0 12px #d946ef, 0 0 30px #d946ef;
+  text-shadow:
+    0 0 12px #d946ef,
+    0 0 30px #d946ef;
 }
 
 .go-stat {
