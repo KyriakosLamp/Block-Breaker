@@ -1,17 +1,10 @@
-const paddleEl = document.getElementById('paddle');
-const hudEl    = document.getElementById('hud');
-const bestEl   = document.getElementById('best-score');
-
+const paddleEl      = document.getElementById('paddle');
+const hudEl         = document.getElementById('hud');
+const bestEl        = document.getElementById('best-score');
 const historyList   = document.getElementById('history-list');
 const goLeaderboard = document.getElementById('go-leaderboard');
 
-let lastStatus = null;
 let scoreSaved = false;
-
-function updateHud() {
-    const active = gameState.status === 'PLAYING' || gameState.status === 'PAUSED';
-    hudEl.classList.toggle('hud-hidden', !active);
-}
 
 function updateBestBadge() {
     bestEl.textContent = getBestScore();
@@ -32,34 +25,40 @@ function onWin() {
     updateBestBadge();
 }
 
-function onMenuOpen() {
-    renderLeaderboard(historyList);
-    updateBestBadge();
+// Watch overlays for when game.js removes 'hidden' — more reliable than status polling
+function watchOverlay(id, callback) {
+    const el = document.getElementById(id);
+    new MutationObserver(() => {
+        if (!el.classList.contains('hidden')) callback();
+    }).observe(el, { attributes: true, attributeFilter: ['class'] });
 }
 
-// Reset save flag when a new game starts
-const _originalRestart = window.restartGame;
-document.getElementById('btn-start').addEventListener('click', () => scoreSaved = false);
-document.getElementById('btn-restart').addEventListener('click', () => scoreSaved = false);
-document.getElementById('btn-restart-go').addEventListener('click', () => scoreSaved = false);
-document.getElementById('btn-restart-win').addEventListener('click', () => scoreSaved = false);
+watchOverlay('overlay-gameover', onGameOver);
+watchOverlay('overlay-win', onWin);
+watchOverlay('overlay-history', () => renderLeaderboard(historyList));
+watchOverlay('overlay-menu', () => {
+    renderLeaderboard(historyList);
+    updateBestBadge();
+});
 
-// Init
+// Reset save flag on any new game
+['btn-start', 'btn-restart', 'btn-restart-go', 'btn-restart-win'].forEach(id => {
+    document.getElementById(id).addEventListener('click', () => scoreSaved = false);
+});
+
+// HUD visibility
+function updateHud() {
+    const active = gameState.status === 'PLAYING' || gameState.status === 'PAUSED';
+    hudEl.classList.toggle('hud-hidden', !active);
+}
+
+// Init on load
 updateBestBadge();
 renderLeaderboard(historyList);
 
 function render() {
     paddleEl.style.transform = `translate3d(${paddle.x}px, 570px, 0)`;
-
     updateHud();
-
-    if (lastStatus !== gameState.status) {
-        if (gameState.status === 'GAMEOVER') onGameOver();
-        if (gameState.status === 'WIN')      onWin();
-        if (gameState.status === 'MENU')     onMenuOpen();
-        lastStatus = gameState.status;
-    }
-
     requestAnimationFrame(render);
 }
 
