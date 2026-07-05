@@ -10,7 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #111;
+  background: #0d0015;
   font-family: monospace;
   color: #fff;
 }
@@ -29,9 +29,10 @@ body {
   position: relative;
   width: 800px;
   height: 600px;
-  background: #1a1a2e;
+  background: #12002a;
   overflow: hidden;
-  border: 2px solid #444;
+  border: 2px solid #39ff14;
+  box-shadow: 0 0 16px #39ff14, 0 0 40px rgba(57, 255, 20, 0.3);
 }
 
 /* Paddle */
@@ -41,8 +42,9 @@ body {
   left: 0;
   width: 100px;
   height: 12px;
-  background: #e0e0e0;
+  background: #39ff14;
   border-radius: 4px;
+  box-shadow: 0 0 8px #39ff14, 0 0 20px rgba(57, 255, 20, 0.6);
   transform: translate3d(350px, 570px, 0);
 }
 
@@ -53,8 +55,9 @@ body {
   left: 0;
   width: 14px;
   height: 14px;
-  background: #ffffff;
+  background: #39ff14;
   border-radius: 50%;
+  box-shadow: 0 0 8px #39ff14, 0 0 20px rgba(57, 255, 20, 0.8);
   transform: translate3d(400px, 550px, 0);
 }
 
@@ -70,10 +73,10 @@ body {
 }
 
 /* Brick color tiers */
-.brick-1 { background: #e74c3c; }
-.brick-2 { background: #e67e22; }
-.brick-3 { background: #f1c40f; }
-.brick-4 { background: #2ecc71; }
+.brick-1 { background: #39ff14; box-shadow: 0 0 6px #39ff14; }
+.brick-2 { background: #7fff00; box-shadow: 0 0 6px #7fff00; }
+.brick-3 { background: #a855f7; box-shadow: 0 0 6px #a855f7; }
+.brick-4 { background: #d946ef; box-shadow: 0 0 6px #d946ef; }
 
 /* Overlays */
 .overlay {
@@ -84,7 +87,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: rgba(10, 10, 30, 0.92);
+  background: rgba(13, 0, 21, 0.93);
   z-index: 10;
 }
 
@@ -92,8 +95,8 @@ body {
   font-size: 36px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: #fff;
-  text-shadow: 0 0 10px #7df, 0 0 20px #7df;
+  color: #39ff14;
+  text-shadow: 0 0 10px #39ff14, 0 0 24px #39ff14;
 }
 
 .overlay button {
@@ -102,17 +105,18 @@ body {
   font-family: monospace;
   letter-spacing: 2px;
   background: transparent;
-  color: #fff;
-  border: 2px solid #7df;
+  color: #39ff14;
+  border: 2px solid #39ff14;
   border-radius: 2px;
   cursor: pointer;
   text-transform: uppercase;
-  transition: background 0.15s, color 0.15s;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
 }
 
 .overlay button:hover {
-  background: #7df;
-  color: #000;
+  background: #39ff14;
+  color: #0d0015;
+  box-shadow: 0 0 12px #39ff14;
 }
 
 .hidden {
@@ -126,8 +130,8 @@ body {
   letter-spacing: 6px;
   text-align: center;
   line-height: 1.1;
-  color: #fff;
-  text-shadow: 0 0 12px #f7c, 0 0 30px #f7c, 0 0 60px #f7c;
+  color: #39ff14;
+  text-shadow: 0 0 12px #39ff14, 0 0 30px #39ff14, 0 0 60px rgba(57, 255, 20, 0.5);
   margin-bottom: 8px;
 }
 
@@ -144,8 +148,8 @@ body {
   right: 20px;
   font-size: 13px;
   letter-spacing: 2px;
-  color: #f7c;
-  text-shadow: 0 0 8px #f7c;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
 }
 
 /* High Scores Screen */
@@ -161,7 +165,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 6px 12px;
-  border-bottom: 1px solid rgba(125, 221, 255, 0.15);
+  border-bottom: 1px solid rgba(57, 255, 20, 0.15);
   font-size: 15px;
   letter-spacing: 2px;
 }
@@ -172,7 +176,7 @@ body {
   text-shadow: 0 0 8px #ffd700;
 }
 
-.hs-rank { color: #7df; min-width: 40px; }
+.hs-rank { color: #39ff14; text-shadow: 0 0 6px #39ff14; min-width: 40px; }
 .hs-name { flex: 1; text-align: center; }
 .hs-score { text-align: right; }
 
@@ -192,8 +196,8 @@ body {
 
 #gameover-left h2 {
   font-size: 48px;
-  color: #f55;
-  text-shadow: 0 0 12px #f55, 0 0 30px #f55;
+  color: #d946ef;
+  text-shadow: 0 0 12px #d946ef, 0 0 30px #d946ef;
 }
 
 .go-stat {
@@ -208,8 +212,8 @@ body {
 
 .go-stat span {
   font-size: 28px;
-  color: #fff;
-  text-shadow: 0 0 8px #7df;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
 }
 
 #gameover-right {
@@ -217,13 +221,13 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  border-left: 1px solid rgba(125, 221, 255, 0.2);
+  border-left: 1px solid rgba(57, 255, 20, 0.2);
   padding-left: 48px;
 }
 
 #gameover-right h3 {
   font-size: 18px;
   letter-spacing: 4px;
-  color: #7df;
-  text-shadow: 0 0 8px #7df;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
 }
