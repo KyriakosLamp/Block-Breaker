@@ -84,29 +84,146 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(10, 10, 30, 0.92);
   z-index: 10;
 }
 
 .overlay h2 {
   font-size: 36px;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 10px #7df, 0 0 20px #7df;
 }
 
 .overlay button {
   padding: 10px 28px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: monospace;
-  background: #e0e0e0;
-  border: none;
-  border-radius: 4px;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #fff;
+  border: 2px solid #7df;
+  border-radius: 2px;
   cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
 }
 
 .overlay button:hover {
-  background: #fff;
+  background: #7df;
+  color: #000;
 }
 
 .hidden {
   display: none;
+}
+
+/* Menu Screen */
+#game-title {
+  font-size: 56px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  text-align: center;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 0 12px #f7c, 0 0 30px #f7c, 0 0 60px #f7c;
+  margin-bottom: 8px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+#high-score-badge {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #f7c;
+  text-shadow: 0 0 8px #f7c;
+}
+
+/* High Scores Screen */
+#history-list,
+#go-leaderboard {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+#history-list li,
+#go-leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-bottom: 1px solid rgba(125, 221, 255, 0.15);
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+#history-list li:first-child,
+#go-leaderboard li:first-child {
+  color: #ffd700;
+  text-shadow: 0 0 8px #ffd700;
+}
+
+.hs-rank { color: #7df; min-width: 40px; }
+.hs-name { flex: 1; text-align: center; }
+.hs-score { text-align: right; }
+
+/* Game Over Layout */
+#gameover-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+#gameover-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#gameover-left h2 {
+  font-size: 48px;
+  color: #f55;
+  text-shadow: 0 0 12px #f55, 0 0 30px #f55;
+}
+
+.go-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #aaa;
+  gap: 2px;
+}
+
+.go-stat span {
+  font-size: 28px;
+  color: #fff;
+  text-shadow: 0 0 8px #7df;
+}
+
+#gameover-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-left: 1px solid rgba(125, 221, 255, 0.2);
+  padding-left: 48px;
+}
+
+#gameover-right h3 {
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #7df;
+  text-shadow: 0 0 8px #7df;
 }
