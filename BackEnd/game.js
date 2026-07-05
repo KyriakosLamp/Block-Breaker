@@ -1,34 +1,29 @@
 let lastTime = 0;
 
-
 const keys = {};
 
-window.addEventListener('keydown', (e) => keys[e.key] = true);
-window.addEventListener('keyup', (e) => keys[e.key] = false);
-
+window.addEventListener("keydown", (e) => (keys[e.key] = true));
+window.addEventListener("keyup", (e) => (keys[e.key] = false));
 
 const paddle = {
-    x: 350,
-    speed: 400
-
+  x: 350,
+  speed: 400,
 };
 
-
-
 function gameLoop(timestamp) {
-if (lastTime === 0) lastTime = timestamp ; // fix the first frame
+  if (lastTime === 0) lastTime = timestamp; // fix the first frame
 
-    const deltaTime = timestamp - lastTime;
-    lastTime = timestamp;
+  const deltaTime = timestamp - lastTime;
+  lastTime = timestamp;
 
-    if (keys['ArrowLeft'] || keys['a'])  paddle.x -= paddle.speed * (deltaTime / 1000);
-    if (keys['ArrowRight'] || keys['d']) paddle.x += paddle.speed * (deltaTime / 1000);
+  if (keys["ArrowLeft"] || keys["a"])
+    paddle.x -= paddle.speed * (deltaTime / 1000);
+  if (keys["ArrowRight"] || keys["d"])
+    paddle.x += paddle.speed * (deltaTime / 1000);
 
-        console.log(paddle.x);
+  console.log(paddle.x);
 
-
-    requestAnimationFrame(gameLoop);
-
+  requestAnimationFrame(gameLoop);
 }
 
 requestAnimationFrame(gameLoop);
