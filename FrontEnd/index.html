@@ -1,38 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Brick Breaker</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="hud">
-    <span>Score: <b id="score">0</b></span>
-    <span>Lives: <b id="lives">3</b></span>
-    <span>Time: <b id="timer">0</b></span>
-  </div>
-
-  <div id="game">
-    <div id="brick-area"></div>
-    <div id="ball"></div>
-    <div id="paddle"></div>
-
-    <!-- Overlays -->
-    <div id="overlay-pause" class="overlay hidden">
-      <h2>Paused</h2>
-      <button id="btn-continue">Continue</button>
-      <button id="btn-restart">Restart</button>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Brick Breaker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="hud">
+      <span>Score: <b id="score">0</b></span>
+      <span>Lives: <b id="lives">3</b></span>
+      <span>Time: <b id="timer">0</b></span>
     </div>
-    <div id="overlay-gameover" class="overlay hidden">
-      <h2>Game Over</h2>
-      <button id="btn-restart-go">Restart</button>
-    </div>
-    <div id="overlay-win" class="overlay hidden">
-      <h2>You Win!</h2>
-      <button id="btn-restart-win">Play Again</button>
-    </div>
-  </div>
 
-  <script src="game.js"></script>
-</body>
+    <div id="game">
+      <div id="brick-area"></div>
+      <div id="ball"></div>
+      <div id="paddle"></div>
+
+      <!-- Overlays -->
+      <div id="overlay-pause" class="overlay hidden">
+        <h2>Paused</h2>
+        <button id="btn-continue">Continue</button>
+        <button id="btn-restart">Restart</button>
+      </div>
+      <div id="overlay-gameover" class="overlay hidden">
+        <h2>Game Over</h2>
+        <button id="btn-restart-go">Restart</button>
+      </div>
+      <div id="overlay-win" class="overlay hidden">
+        <h2>You Win!</h2>
+        <button id="btn-restart-win">Play Again</button>
+      </div>
+    </div>
+
+    <script src="/BackEnd/game.js"></script>
+    <script src="render.js"></script>
+  </body>
 </html>
