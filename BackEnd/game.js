@@ -4,7 +4,7 @@ const gameState = {
     score: 0,
     lives: 3,
     time: 0,
-    status: 'PLAYING'
+    status: 'MENU'
 };
 
 const livesEl = document.getElementById('lives');
@@ -138,6 +138,25 @@ if (lastTime === 0) lastTime = timestamp ; // fix the first frame
         console.log(gameState.lives)
 
     requestAnimationFrame(gameLoop);
+
+    document.getElementById('btn-start').addEventListener('click', () => {
+    document.getElementById('overlay-menu').classList.add('hidden');
+    gameState.status = 'PLAYING';
+
+});
+
+    document.getElementById('btn-history').addEventListener('click', () => {
+    document.getElementById('overlay-menu').classList.add('hidden');
+    document.getElementById('overlay-history').classList.remove('hidden');
+});
+
+document.getElementById('btn-back').addEventListener('click', () => {
+    document.getElementById('overlay-history').classList.add('hidden');
+    document.getElementById('overlay-menu').classList.remove('hidden');
+});
+
+
+
 
 }
 
