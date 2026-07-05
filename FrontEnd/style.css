@@ -48,12 +48,12 @@ body::before {
   position: relative;
   width: 800px;
   height: 600px;
-  background: #12002a;
+  background: #12002a60;
   overflow: hidden;
   border: 2px solid #39ff14;
   box-shadow:
     0 0 16px #39ff14,
-    0 0 40px rgba(57, 255, 20, 0.3);
+    0 0 40px rgba(55, 255, 20, 0.09);
 }
 
 /* Paddle */
@@ -231,17 +231,54 @@ body::before {
   text-shadow: 0 0 8px #ffd700;
 }
 
-.hs-rank {
-  color: #39ff14;
-  text-shadow: 0 0 6px #39ff14;
-  min-width: 40px;
+.hs-rank  { color: #39ff14; text-shadow: 0 0 6px #39ff14; min-width: 36px; }
+.hs-name  { flex: 1; text-align: center; letter-spacing: 3px; }
+.hs-score { min-width: 60px; text-align: right; }
+.hs-time  { min-width: 44px; text-align: right; color: #aaa; font-size: 13px; }
+
+/* Name Entry Overlay */
+#ne-subtitle {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #aaa;
 }
-.hs-name {
-  flex: 1;
+
+#ne-chars {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.ne-char {
+  display: inline-block;
+  width: 52px;
+  height: 64px;
+  line-height: 64px;
   text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0;
+  border: 2px solid rgba(57, 255, 20, 0.3);
+  border-radius: 4px;
+  color: #aaa;
+  transition: color 0.1s, border-color 0.1s, text-shadow 0.1s;
 }
-.hs-score {
-  text-align: right;
+
+.ne-char.ne-active {
+  color: #39ff14;
+  border-color: #39ff14;
+  text-shadow: 0 0 12px #39ff14;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.3; }
+}
+
+#ne-hint {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.3);
 }
 
 /* Game Over Layout */

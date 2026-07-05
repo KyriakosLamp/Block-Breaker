@@ -31,11 +31,11 @@
       <div id="overlay-history" class="overlay hidden">
         <h2>HIGH SCORES</h2>
         <ol id="history-list">
-          <li><span class="hs-rank">1ST</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
-          <li><span class="hs-rank">2ND</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
-          <li><span class="hs-rank">3RD</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
-          <li><span class="hs-rank">4TH</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
-          <li><span class="hs-rank">5TH</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
+          <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+          <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+          <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+          <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+          <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
         </ol>
         <button id="btn-back">← BACK</button>
       </div>
@@ -60,14 +60,28 @@
           <div id="gameover-right">
             <h3>TOP 5</h3>
             <ol id="go-leaderboard">
-              <li><span class="hs-rank">1ST</span><span class="hs-score">---</span></li>
-              <li><span class="hs-rank">2ND</span><span class="hs-score">---</span></li>
-              <li><span class="hs-rank">3RD</span><span class="hs-score">---</span></li>
-              <li><span class="hs-rank">4TH</span><span class="hs-score">---</span></li>
-              <li><span class="hs-rank">5TH</span><span class="hs-score">---</span></li>
+              <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+              <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+              <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+              <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
+              <li><span class="hs-rank">---</span><span class="hs-name">---</span><span class="hs-score">---</span><span class="hs-time">---</span></li>
             </ol>
           </div>
         </div>
+      </div>
+
+      <!-- Name Entry Overlay -->
+      <div id="overlay-nameentry" class="overlay hidden">
+        <h2>HIGH SCORE!</h2>
+        <div class="go-stat">YOUR SCORE<span id="ne-score">0</span></div>
+        <p id="ne-subtitle">ENTER YOUR NAME</p>
+        <div id="ne-chars">
+          <span class="ne-char" id="ne-c0">A</span>
+          <span class="ne-char" id="ne-c1">A</span>
+          <span class="ne-char" id="ne-c2">A</span>
+        </div>
+        <p id="ne-hint">← → MOVE &nbsp;|&nbsp; ↑ ↓ CHANGE &nbsp;|&nbsp; ENTER CONFIRM</p>
+        <button id="btn-ne-confirm">✔ CONFIRM</button>
       </div>
 
       <!-- Win Screen -->
@@ -80,8 +94,11 @@
       </div>
     </div>
 
-    <script src="/BackEnd/game.js"></script>
+    <script src="/BackEnd/state.js"></script>
+    <script src="/BackEnd/input.js"></script>
+    <script src="/BackEnd/physics.js"></script>
     <script src="scores.js"></script>
     <script src="render.js"></script>
+    <script src="/BackEnd/loop.js"></script>
   </body>
 </html>
