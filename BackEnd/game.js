@@ -1,5 +1,15 @@
 let lastTime = 0;
 
+const gameState = {
+    score: 0,
+    lives: 3,
+    time: 0,
+    status: 'PLAYING'
+};
+
+const livesEl = document.getElementById('lives');
+const scoreEl = document.getElementById('score');
+const timerEl = document.getElementById('timer');
 
 const keys = {};
 
@@ -23,8 +33,11 @@ const ball = {
 
 
 function render() {
-  paddleEl.style.transform = `translate3d(${paddle.x}px, 570px, 0)`;
-  ballEl.style.transform = `translate3d(${ball.x}px, ${ball.y}px, 0)`;
+    paddleEl.style.transform = `translate3d(${paddle.x}px, 570px, 0)`;
+    ballEl.style.transform = `translate3d(${ball.x}px, ${ball.y}px, 0)`;
+    livesEl.textContent = gameState.lives;
+    scoreEl.textContent = gameState.score;
+    timerEl.textContent = Math.floor(gameState.time);
 }
 
 
@@ -33,6 +46,8 @@ if (lastTime === 0) lastTime = timestamp ; // fix the first frame
 
     const deltaTime = timestamp - lastTime;
     lastTime = timestamp;
+    gameState.time += deltaTime / 1000;
+
 
     if (keys['ArrowLeft'] || keys['a'])  paddle.x -= paddle.speed * (deltaTime / 1000);
     if (keys['ArrowRight'] || keys['d']) paddle.x += paddle.speed * (deltaTime / 1000);
@@ -61,11 +76,17 @@ if (lastTime === 0) lastTime = timestamp ; // fix the first frame
         ball.vy *= -1;
     }
 
-
-
+    // ball fell off bottom
+    if (ball.y > 600) {
+        gameState.lives -= 1;
+        ball.x = 400;
+        ball.y = 550;
+        ball.vx = 200;
+        ball.vy = -300;
+    }
 
         render()
-
+        console.log(gameState.lives)
 
     requestAnimationFrame(gameLoop);
 
