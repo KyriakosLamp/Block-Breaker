@@ -17,23 +17,69 @@
       <div id="ball"></div>
       <div id="paddle"></div>
 
-      <!-- Overlays -->
+      <!-- Menu Screen -->
+      <div id="overlay-menu" class="overlay">
+        <div id="high-score-badge">🏆 BEST: <span id="best-score">0</span></div>
+        <h1 id="game-title">BRICK<br>BREAKER</h1>
+        <div class="menu-buttons">
+          <button id="btn-start">▶ START</button>
+          <button id="btn-history">📋 HIGH SCORES</button>
+        </div>
+      </div>
+
+      <!-- High Scores Screen -->
+      <div id="overlay-history" class="overlay hidden">
+        <h2>HIGH SCORES</h2>
+        <ol id="history-list">
+          <li><span class="hs-rank">1ST</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
+          <li><span class="hs-rank">2ND</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
+          <li><span class="hs-rank">3RD</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
+          <li><span class="hs-rank">4TH</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
+          <li><span class="hs-rank">5TH</span><span class="hs-name">AAA</span><span class="hs-score">---</span></li>
+        </ol>
+        <button id="btn-back">← BACK</button>
+      </div>
+
+      <!-- Pause Screen -->
       <div id="overlay-pause" class="overlay hidden">
-        <h2>Paused</h2>
-        <button id="btn-continue">Continue</button>
-        <button id="btn-restart">Restart</button>
+        <h2>PAUSED</h2>
+        <button id="btn-continue">▶ CONTINUE</button>
+        <button id="btn-restart">↺ RESTART</button>
       </div>
+
+      <!-- Game Over Screen -->
       <div id="overlay-gameover" class="overlay hidden">
-        <h2>Game Over</h2>
-        <button id="btn-restart-go">Restart</button>
+        <div id="gameover-layout">
+          <div id="gameover-left">
+            <h2>GAME<br>OVER</h2>
+            <div class="go-stat">SCORE<span id="go-score">0</span></div>
+            <div class="go-stat">TIME<span id="go-time">0s</span></div>
+            <button id="btn-restart-go">↺ PLAY AGAIN</button>
+            <button id="btn-menu-go">⌂ MENU</button>
+          </div>
+          <div id="gameover-right">
+            <h3>TOP 5</h3>
+            <ol id="go-leaderboard">
+              <li><span class="hs-rank">1ST</span><span class="hs-score">---</span></li>
+              <li><span class="hs-rank">2ND</span><span class="hs-score">---</span></li>
+              <li><span class="hs-rank">3RD</span><span class="hs-score">---</span></li>
+              <li><span class="hs-rank">4TH</span><span class="hs-score">---</span></li>
+              <li><span class="hs-rank">5TH</span><span class="hs-score">---</span></li>
+            </ol>
+          </div>
+        </div>
       </div>
+
+      <!-- Win Screen -->
       <div id="overlay-win" class="overlay hidden">
-        <h2>You Win!</h2>
-        <button id="btn-restart-win">Play Again</button>
+        <h2>YOU WIN!</h2>
+        <div class="go-stat">SCORE<span id="win-score">0</span></div>
+        <div class="go-stat">TIME<span id="win-time">0s</span></div>
+        <button id="btn-restart-win">↺ PLAY AGAIN</button>
+        <button id="btn-menu-win">⌂ MENU</button>
       </div>
     </div>
 
     <script src="/BackEnd/game.js"></script>
-    <script src="render.js"></script>
   </body>
 </html>

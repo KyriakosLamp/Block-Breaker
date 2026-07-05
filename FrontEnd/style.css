@@ -10,9 +10,28 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: #111;
+  background: #0d0015;
   font-family: monospace;
   color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("retro-80s-grid-abstract-background.webp") center / cover
+    no-repeat;
+  opacity: 0.07;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#hud,
+#game {
+  position: relative;
+  z-index: 1;
 }
 
 /* HUD */
@@ -29,9 +48,12 @@ body {
   position: relative;
   width: 800px;
   height: 600px;
-  background: #1a1a2e;
+  background: #12002a;
   overflow: hidden;
-  border: 2px solid #444;
+  border: 2px solid #39ff14;
+  box-shadow:
+    0 0 16px #39ff14,
+    0 0 40px rgba(57, 255, 20, 0.3);
 }
 
 /* Paddle */
@@ -41,8 +63,11 @@ body {
   left: 0;
   width: 100px;
   height: 12px;
-  background: #e0e0e0;
+  background: #39ff14;
   border-radius: 4px;
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 20px rgba(57, 255, 20, 0.6);
   transform: translate3d(350px, 570px, 0);
 }
 
@@ -53,8 +78,11 @@ body {
   left: 0;
   width: 14px;
   height: 14px;
-  background: #ffffff;
+  background: #39ff14;
   border-radius: 50%;
+  box-shadow:
+    0 0 8px #39ff14,
+    0 0 20px rgba(57, 255, 20, 0.8);
   transform: translate3d(400px, 550px, 0);
 }
 
@@ -70,10 +98,22 @@ body {
 }
 
 /* Brick color tiers */
-.brick-1 { background: #e74c3c; }
-.brick-2 { background: #e67e22; }
-.brick-3 { background: #f1c40f; }
-.brick-4 { background: #2ecc71; }
+.brick-1 {
+  background: #39ff14;
+  box-shadow: 0 0 6px #39ff14;
+}
+.brick-2 {
+  background: #7fff00;
+  box-shadow: 0 0 6px #7fff00;
+}
+.brick-3 {
+  background: #a855f7;
+  box-shadow: 0 0 6px #a855f7;
+}
+.brick-4 {
+  background: #d946ef;
+  box-shadow: 0 0 6px #d946ef;
+}
 
 /* Overlays */
 .overlay {
@@ -84,29 +124,166 @@ body {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(13, 0, 21, 0.93);
   z-index: 10;
 }
 
 .overlay h2 {
   font-size: 36px;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #39ff14;
+  text-shadow:
+    0 0 10px #39ff14,
+    0 0 24px #39ff14;
 }
 
 .overlay button {
   padding: 10px 28px;
-  font-size: 16px;
+  font-size: 15px;
   font-family: monospace;
-  background: #e0e0e0;
-  border: none;
-  border-radius: 4px;
+  letter-spacing: 2px;
+  background: transparent;
+  color: #39ff14;
+  border: 2px solid #39ff14;
+  border-radius: 2px;
   cursor: pointer;
+  text-transform: uppercase;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    box-shadow 0.15s;
 }
 
 .overlay button:hover {
-  background: #fff;
+  background: #39ff14;
+  color: #0d0015;
+  box-shadow: 0 0 12px #39ff14;
 }
 
 .hidden {
   display: none;
+}
+
+/* Menu Screen */
+#game-title {
+  font-size: 56px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  text-align: center;
+  line-height: 1.1;
+  color: #39ff14;
+  text-shadow:
+    0 0 12px #39ff14,
+    0 0 30px #39ff14,
+    0 0 60px rgba(57, 255, 20, 0.5);
+  margin-bottom: 8px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+#high-score-badge {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
+}
+
+/* High Scores Screen */
+#history-list,
+#go-leaderboard {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+#history-list li,
+#go-leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-bottom: 1px solid rgba(57, 255, 20, 0.15);
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+#history-list li:first-child,
+#go-leaderboard li:first-child {
+  color: #ffd700;
+  text-shadow: 0 0 8px #ffd700;
+}
+
+.hs-rank {
+  color: #39ff14;
+  text-shadow: 0 0 6px #39ff14;
+  min-width: 40px;
+}
+.hs-name {
+  flex: 1;
+  text-align: center;
+}
+.hs-score {
+  text-align: right;
+}
+
+/* Game Over Layout */
+#gameover-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+#gameover-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#gameover-left h2 {
+  font-size: 48px;
+  color: #d946ef;
+  text-shadow:
+    0 0 12px #d946ef,
+    0 0 30px #d946ef;
+}
+
+.go-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #aaa;
+  gap: 2px;
+}
+
+.go-stat span {
+  font-size: 28px;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
+}
+
+#gameover-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-left: 1px solid rgba(57, 255, 20, 0.2);
+  padding-left: 48px;
+}
+
+#gameover-right h3 {
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: #39ff14;
+  text-shadow: 0 0 8px #39ff14;
 }
