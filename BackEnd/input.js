@@ -4,7 +4,6 @@ window.addEventListener('keydown', (e) => {
     keys[e.key] = true;
     if (e.key === 'Escape' && gameState.status === 'PLAYING') {
         gameState.status = 'PAUSED';
-        document.getElementById('overlay-pause').classList.remove('hidden');
     }
 });
 

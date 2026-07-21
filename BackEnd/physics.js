@@ -21,6 +21,13 @@ function initBricks() {
     });
 }
 
+function resetBricks() {
+    bricks.forEach(b => {
+        b.active = true;
+        b.el.style.visibility = 'visible';
+    });
+}
+
 function resetBall() {
     ball.x = 400; ball.y = 550;
     ball.vx = 200; ball.vy = -300;
@@ -33,10 +40,7 @@ function restartGame() {
     gameState.status = 'PLAYING';
     paddle.x = 350;
     resetBall();
-    bricks.forEach(b => {
-        b.active = true;
-        b.el.style.display = 'block';
-    });
+    resetBricks();
 }
 
 function updatePhysics(dt) {
@@ -79,7 +83,7 @@ function updatePhysics(dt) {
             ball.y < brick.y + brick.height
         ) {
             brick.active = false;
-            brick.el.style.display = 'none';
+            brick.el.style.visibility = 'hidden';
             ball.vy *= -1;
             gameState.score += 100;
             hitBrick = true;

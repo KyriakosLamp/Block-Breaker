@@ -10,11 +10,20 @@
       <span>Score: <b id="score">0</b></span>
       <span>Lives: <b id="lives">3</b></span>
       <span>Time: <b id="timer">0</b></span>
+      <span>FPS: <b id="fps">0</b></span>
     </div>
 
     <div id="game">
       <div id="brick-area"></div>
-      <div id="ball"></div>
+      <svg id="ball" width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;overflow:visible">
+        <circle cx="7" cy="7" r="7" fill="#39ff14" filter="url(#ball-glow)"/>
+        <defs>
+          <filter id="ball-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+      </svg>
       <div id="paddle"></div>
 
       <!-- Menu Screen -->
@@ -94,11 +103,11 @@
       </div>
     </div>
 
-    <script src="/BackEnd/state.js"></script>
-    <script src="/BackEnd/input.js"></script>
-    <script src="/BackEnd/physics.js"></script>
+    <script src="../BackEnd/state.js"></script>
+    <script src="../BackEnd/input.js"></script>
+    <script src="../BackEnd/physics.js"></script>
     <script src="scores.js"></script>
     <script src="render.js"></script>
-    <script src="/BackEnd/loop.js"></script>
+    <script src="../BackEnd/loop.js"></script>
   </body>
 </html>

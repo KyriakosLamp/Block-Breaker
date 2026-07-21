@@ -7,6 +7,7 @@ const hudEl         = document.getElementById('hud');
 const scoreEl       = document.getElementById('score');
 const livesEl       = document.getElementById('lives');
 const timerEl       = document.getElementById('timer');
+const fpsEl         = document.getElementById('fps');
 const bestEl        = document.getElementById('best-score');
 const historyList   = document.getElementById('history-list');
 const goLeaderboard = document.getElementById('go-leaderboard');
@@ -16,7 +17,7 @@ let lastStatus = null;
 
 // ── Render ────────────────────────────────────────────────────────────────────
 
-function render() {
+function render(dt) {
     paddleEl.style.transform = `translate3d(${paddle.x}px, ${PADDLE_Y}px, 0)`;
     ballEl.style.transform   = `translate3d(${ball.x}px, ${ball.y}px, 0)`;
 
@@ -24,6 +25,7 @@ function render() {
         scoreEl.textContent = gameState.score;
         livesEl.textContent = gameState.lives;
         timerEl.textContent = Math.floor(gameState.time);
+        fpsEl.textContent   = dt > 0 ? Math.round(1 / dt) : 0;
     }
 
     if (lastStatus !== gameState.status) {
@@ -164,7 +166,6 @@ function goToMenu() {
 document.getElementById('btn-start').addEventListener('click', () => {
     hideOverlay('overlay-menu');
     scoreSaved = false;
-    initBricks();
     restartGame();
 });
 
@@ -187,14 +188,12 @@ document.getElementById('btn-continue').addEventListener('click', () => {
 document.getElementById('btn-restart').addEventListener('click', () => {
     hideOverlay('overlay-pause');
     scoreSaved = false;
-    initBricks();
     restartGame();
 });
 
 document.getElementById('btn-restart-go').addEventListener('click', () => {
     hideOverlay('overlay-gameover');
     scoreSaved = false;
-    initBricks();
     restartGame();
 });
 
@@ -206,7 +205,6 @@ document.getElementById('btn-menu-go').addEventListener('click', () => {
 document.getElementById('btn-restart-win').addEventListener('click', () => {
     hideOverlay('overlay-win');
     scoreSaved = false;
-    initBricks();
     restartGame();
 });
 
