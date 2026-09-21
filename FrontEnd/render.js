@@ -161,6 +161,15 @@ function goToMenu() {
     gameState.status = 'MENU';
 }
 
+function onEscPress() {
+    if (gameState.status === 'PLAYING') {
+        gameState.status = 'PAUSED';
+    } else if (gameState.status === 'PAUSED') {
+        hideOverlay('overlay-pause');
+        gameState.status = 'PLAYING';
+    }
+}
+
 // ── Button listeners ──────────────────────────────────────────────────────────
 
 document.getElementById('btn-start').addEventListener('click', () => {
