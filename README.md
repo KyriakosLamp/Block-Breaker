@@ -52,12 +52,12 @@ They communicate through a **shared global state** (`gameState`, `paddle`, `ball
 ### Script load order
 
 ```html
-<script src="/BackEnd/state.js"></script>    <!-- 1. data first -->
-<script src="/BackEnd/input.js"></script>    <!-- 2. input listeners -->
-<script src="/BackEnd/physics.js"></script>  <!-- 3. logic, depends on state -->
-<script src="scores.js"></script>            <!-- 4. localStorage helpers -->
-<script src="render.js"></script>            <!-- 5. DOM layer, depends on all above -->
-<script src="/BackEnd/loop.js"></script>     <!-- 6. starts the loop last -->
+<script src="../BackEnd/state.js"></script>    <!-- 1. data first -->
+<script src="../BackEnd/input.js"></script>    <!-- 2. input listeners -->
+<script src="../BackEnd/physics.js"></script>  <!-- 3. logic, depends on state -->
+<script src="scores.js"></script>              <!-- 4. localStorage helpers -->
+<script src="render.js"></script>              <!-- 5. DOM layer, depends on all above -->
+<script src="../BackEnd/loop.js"></script>     <!-- 6. starts the loop last -->
 ```
 
 ---
