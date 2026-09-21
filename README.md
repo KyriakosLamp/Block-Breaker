@@ -90,7 +90,7 @@ function gameLoop(timestamp) {
 Instead of drawing pixels on a `<canvas>`, every game object is an HTML `<div>`:
 
 - `#paddle` — a div styled with `width`, `height`, and `border-radius`
-- `#ball` — a div styled as a circle via `border-radius: 50%`
+- `#ball` — an SVG element with a `<circle>` and a `feGaussianBlur` glow filter for the neon effect
 - `.brick` — divs dynamically generated from the `brickMap` array
 
 **Positions are never set via `top` / `left`.** All movement is applied through:
