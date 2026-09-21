@@ -118,7 +118,7 @@ ball.vx = offset * 6;
 ball.vy = -Math.abs(ball.vy);
 ```
 
-- **Brick collision (AABB)** — same bounding box check against each active brick. On hit the brick is deactivated (`display: none`), score increments by 100, and `vy` is inverted. Only one brick is hit per frame to prevent tunnelling.
+- **Brick collision (AABB)** — same bounding box check against each active brick. On hit the brick is deactivated (`visibility: hidden`), score increments by 100, and `vy` is inverted. Only one brick is hit per frame to prevent tunnelling.
 
 ---
 
